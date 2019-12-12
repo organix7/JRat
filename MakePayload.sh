@@ -18,6 +18,7 @@ done
 
 echo "Création du script avec l'ip $ip et le port $port ...";
 
+mkdir ./out
 mkdir src/rat/tmp
 mv src/rat/Payload.java src/rat/tmp/Temp.java
 cp src/rat/tmp/Temp.java src/rat/Payload.java
@@ -34,7 +35,7 @@ javac -cp ./src/rat  ./src/rat/Payload.java ./src/rat/commande/*.java ./src/rat/
 jar cvfm Payload.jar ./src/META-INF/MANIFEST.MF -C ./out/ .
 
 rm src/rat/Payload.java
-rm -rf ./out/*
+rm -rf ./out
 mv src/rat/tmp/Temp.java src/rat/Payload.java
 rm -rf src/rat/tmp
 echo "Fini."
