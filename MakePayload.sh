@@ -1,4 +1,4 @@
-#!/bin/bash.exe
+#!/bin/bash
 
 read -p "Enter the ip address: " ip;
 read -p "Enter the port: " port;
